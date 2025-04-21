@@ -1,0 +1,120 @@
+<mat-card appearance="outlined" class="max-w-lg mx-auto mt-16 p-6">
+  <form [formGroup]="detailForm">
+    <p class="text-center mb-6 text-primary text-xl">Detail Employee</p>
+    <div class="mb-6">
+      <component-label title="Username *" />
+
+      <input
+        formControlName="username"
+        type="text"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Username"
+        readonly
+      />
+    </div>
+
+    <div class="mb-6">
+      <component-label title="Nama Depan *" />
+
+      <input
+        formControlName="firstName"
+        type="text"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Nama Depan"
+        readonly
+      />
+    </div>
+
+    <div class="mb-6">
+      <component-label title="Nama Belakang *" />
+
+      <input
+        formControlName="lastName"
+        type="text"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Nama Belakang"
+        readonly
+      />
+    </div>
+
+    <div class="mb-6">
+      <component-label title="Email *" />
+
+      <input
+        formControlName="email"
+        type="email"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        readonly
+      />
+    </div>
+
+    <div class="mb-6">
+      <component-label title="Tanggal Lahir *" />
+
+      <input
+        formControlName="birthDate"
+        type="date"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Tanggal Lahir"
+        readonly
+      />
+    </div>
+
+    <div class="mb-6">
+      <component-label title="Basic Salary *" />
+
+      <input
+        formControlName="basicSalary"
+        type="text"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Basic Salary"
+        readonly
+      />
+    </div>
+
+    <div class="mb-6">
+      <component-label title="Status *" />
+
+      <select
+        formControlName="status"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        aria-placeholder="Pilih status"
+        aria-readonly="true"
+      >
+        <option value="">Pilih status</option>
+        <option value="Permanent">Permanent</option>
+        <option value="Contract">Contract</option>
+      </select>
+    </div>
+
+    <div class="mb-6">
+      <component-label title="Group *" />
+
+      <input
+        formControlName="group"
+        type="text"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        readonly
+      />
+    </div>
+
+    <div class="mb-6">
+      <component-label title="Deskripsi *" />
+
+      <textarea
+        formControlName="description"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Deskripsi"
+        rows="3"
+        readonly
+      ></textarea>
+    </div>
+
+    <button
+      (click)="onCancel()"
+      class="w-full bg-yellow-500 text-white font-semibold py-2 rounded-lg hover:bg-yellow-700 transition-colors"
+    >
+      Kembali
+    </button>
+  </form>
+</mat-card>

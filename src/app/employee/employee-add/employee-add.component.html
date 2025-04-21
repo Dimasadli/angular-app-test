@@ -1,0 +1,214 @@
+<mat-card appearance="outlined" class="max-w-lg mx-auto mt-16 p-6">
+  <form [formGroup]="addForm" (ngSubmit)="onSubmit()">
+    <p class="text-center mb-6 text-primary text-xl">Add Employee</p>
+    <div class="mb-6">
+      <component-label title="Username *" />
+
+      <input
+        formControlName="username"
+        type="text"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Username"
+      />
+
+      <component-error-text
+        [isShowError]="
+          addForm.get('username')?.invalid && addForm.get('username')?.touched
+        "
+        errorMessage="Username wajib diisi"
+      />
+    </div>
+
+    <div class="mb-6">
+      <component-label title="Nama Depan *" />
+
+      <input
+        formControlName="firstName"
+        type="text"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Nama Depan"
+      />
+
+      <component-error-text
+        [isShowError]="
+          addForm.get('firstName')?.invalid && addForm.get('firstName')?.touched
+        "
+        errorMessage="Nama Depan wajib diisi"
+      />
+    </div>
+
+    <div class="mb-6">
+      <component-label title="Nama Belakang *" />
+
+      <input
+        formControlName="lastName"
+        type="text"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Nama Belakang"
+      />
+
+      <component-error-text
+        [isShowError]="
+          addForm.get('lastName')?.invalid && addForm.get('lastName')?.touched
+        "
+        errorMessage="Nama Belakang wajib diisi"
+      />
+    </div>
+
+    <div class="mb-6">
+      <component-label title="Email *" />
+
+      <input
+        formControlName="email"
+        type="email"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Email"
+      />
+
+      <component-error-text
+        [isShowError]="
+          addForm.get('email')?.invalid && addForm.get('email')?.touched
+        "
+        [errorMessage]="
+          addForm.get('email')?.hasError('required')
+            ? 'Email wajib diisi.'
+            : addForm.get('email')?.hasError('email')
+            ? 'Format email tidak valid.'
+            : ''
+        "
+      />
+    </div>
+
+    <div class="mb-6">
+      <component-label title="Tanggal Lahir *" />
+
+      <input
+        formControlName="birthDate"
+        type="date"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Tanggal Lahir"
+      />
+
+      <component-error-text
+        [isShowError]="
+          addForm.get('birthDate')?.invalid && addForm.get('birthDate')?.touched
+        "
+        [errorMessage]="
+          addForm.get('birthDate')?.hasError('required')
+            ? 'Tanggal Lahir wajib diisi.'
+            : addForm.get('birthDate')?.hasError('futureDate')
+            ? 'Tanggal Lahir tidak boleh lebih dari hari ini.'
+            : ''
+        "
+      />
+    </div>
+
+    <div class="mb-6">
+      <component-label title="Basic Salary *" />
+
+      <input
+        formControlName="basicSalary"
+        type="number"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Basic Salary"
+      />
+
+      <component-error-text
+        [isShowError]="
+          addForm.get('basicSalary')?.invalid &&
+          addForm.get('basicSalary')?.touched
+        "
+        [errorMessage]="
+          addForm.get('basicSalary')?.hasError('required')
+            ? 'Salary wajib diisi.'
+            : addForm.get('basicSalary')?.hasError('pattern')
+            ? 'Salary harus berupa angka.'
+            : ''
+        "
+      />
+    </div>
+
+    <div class="mb-6">
+      <component-label title="Status *" />
+
+      <select
+        formControlName="status"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        aria-placeholder="Pilih status"
+      >
+        <option value="">Pilih status</option>
+        <option value="Permanent">Permanent</option>
+        <option value="Contract">Contract</option>
+      </select>
+
+      <component-error-text
+        [isShowError]="
+          addForm.get('status')?.invalid && addForm.get('status')?.touched
+        "
+        errorMessage="Status wajib diisi"
+      />
+    </div>
+
+    <div class="mb-6">
+      <component-label title="Group *" />
+
+      <input
+        type="text"
+        formControlName="group"
+        [matAutocomplete]="auto"
+        placeholder="Pilih atau cari group"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          *ngFor="let option of filteredGroupList$ | async"
+          [value]="option"
+        >
+          {{ option }}
+        </mat-option>
+      </mat-autocomplete>
+
+      <component-error-text
+        [isShowError]="
+          addForm.get('group')?.invalid && addForm.get('group')?.touched
+        "
+        errorMessage="Group wajib diisi"
+      />
+    </div>
+
+    <div class="mb-6">
+      <component-label title="Deskripsi *" />
+
+      <textarea
+        formControlName="description"
+        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        placeholder="Deskripsi"
+        rows="3"
+      ></textarea>
+
+      <component-error-text
+        [isShowError]="
+          addForm.get('description')?.invalid &&
+          addForm.get('description')?.touched
+        "
+        errorMessage="Deskripsi wajib diisi"
+      />
+    </div>
+
+    <div class="flex justify-between gap-4">
+      <button
+        (click)="onCancel()"
+        class="w-full bg-yellow-500 text-white font-semibold py-2 rounded-lg hover:bg-yellow-700 transition-colors cursor-pointer"
+      >
+        Cancel
+      </button>
+
+      <button
+        type="submit"
+        class="w-full bg-blue-500 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition-colors cursor-pointer"
+      >
+        Save
+      </button>
+    </div>
+  </form>
+</mat-card>

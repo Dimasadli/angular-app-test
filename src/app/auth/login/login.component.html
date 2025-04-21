@@ -1,0 +1,52 @@
+<mat-card appearance="outlined" class="max-w-sm mx-auto mt-16 p-6">
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmitLogin()">
+    <p class="text-center mb-6 text-primary text-xl">Sign In</p>
+    <div class="form-group">
+      <div class="mb-6">
+        <component-label title="Username *" />
+        <input
+          type="text"
+          formControlName="username"
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+
+        <component-error-text
+          [isShowError]="
+            loginForm.get('username')?.invalid &&
+            loginForm.get('username')?.touched
+          "
+          errorMessage="Username wajib diisi"
+        />
+      </div>
+
+      <div class="mb-6">
+        <component-label title="Password *" />
+
+        <input
+          type="password"
+          formControlName="password"
+          class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+
+        <component-error-text
+          [isShowError]="
+            loginForm.get('password')?.invalid &&
+            loginForm.get('password')?.touched
+          "
+          errorMessage=" Password wajib diisi"
+        />
+      </div>
+
+      <div *ngIf="errorMessage" class="text-red-600 text-center mb-4">
+        {{ errorMessage }}
+      </div>
+
+      <button
+        type="submit"
+        class="w-full bg-primary text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition-colors"
+      >
+        Login
+      </button>
+    </div>
+  </form>
+</mat-card>
