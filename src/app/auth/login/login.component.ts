@@ -10,11 +10,12 @@ import { Router } from '@angular/router';
 import { LabelComponent } from '../../components/label/label.component';
 import { ErrorTextComponent } from '../../components/error-text/error-text.component';
 import { MatCardModule } from '@angular/material/card';
+import { environment } from '../../../environments/environment.development';
 
-const DUMMY = {
-  username: 'admin',
-  password: '123',
-};
+// const DUMMY = {
+//   username: 'admin',
+//   password: '123',
+// };
 
 @Component({
   selector: 'app-login',
@@ -31,6 +32,7 @@ const DUMMY = {
 export class LoginComponent {
   errorMessage: string = '';
   loginForm!: FormGroup;
+  DUMMY: any = environment.dummyCredentials;
 
   constructor(private fb: FormBuilder, private router: Router) {
     this.loginForm = this.fb.group({
@@ -49,7 +51,7 @@ export class LoginComponent {
     const { username, password } = this.loginForm.value;
 
     // Trigger if username or password didn't matched
-    if (username !== DUMMY.username && password !== DUMMY.password) {
+    if (username !== this.DUMMY.username && password !== this.DUMMY.password) {
       this.errorMessage = 'Username atau password salah';
     } else {
       localStorage.setItem('token', 'admin-token');
