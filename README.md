@@ -65,24 +65,28 @@ export const environment = {
 ```
 
 For the first time user could login using dummy account, then redirect to employee list.
-username: admin
-password: 123
+
+- username: admin
+- password: 123
 
 ## Employee List
 
 In this page, user can see the list of all mock employee that generated first time and save in localStorage. User could search by name, sort by name A-Z or Z-A.
-If user click edit, there will be toast that informs the user "Open edit page".
-If user click delete, there will be toast that informs the user "Success delete data".
-If user click detail, then user will redirect to Employee Detail Page.
-If user click Tambah Employee, then user will redirect to Employee Add Page.
+
+- If user click edit, there will be toast that informs the user "Open edit page".
+- If user click delete, there will be toast that informs the user "Success delete data".
+- If user click detail, then user will redirect to Employee Detail Page.
+- If user click Tambah Employee, then user will redirect to Employee Add Page.
 
 ## Employee Detail
 
 In this page, user could see all the detail of user depending userId that has been passed from employee list page.
-If user click kembali, then user will go back to Employee List Page.
+
+- If user click kembali, then user will go back to Employee List Page.
 
 ## Employee
 
 In this page, user could generate new employee by fill all the required input.
-If user click kembali, then user will go back to Employee List Page.
-If user click save, then new employee being added to the current list employee and user will redirect to Employee List Page.
+
+- If user click kembali, then user will go back to Employee List Page.
+- If user click save, then new employee being added to the current list employee and user will redirect to Employee List Page.
