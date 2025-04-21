@@ -12,11 +12,6 @@ import { ErrorTextComponent } from '../../components/error-text/error-text.compo
 import { MatCardModule } from '@angular/material/card';
 import { environment } from '../../../environments/environment.development';
 
-// const DUMMY = {
-//   username: 'admin',
-//   password: '123',
-// };
-
 @Component({
   selector: 'app-login',
   imports: [
